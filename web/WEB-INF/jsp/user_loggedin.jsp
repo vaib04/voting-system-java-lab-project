@@ -14,7 +14,7 @@
     <body>
         <h1>Hello</h1><br/>
         <p> Username: ${person.uname} </p>
-        <p> Password: ${person.pass} </p>
-        <a href="login.htm">Submit another message</a>
+        
+        <a href="login.htm">Go to Login page</a>
     </body>
 </html>

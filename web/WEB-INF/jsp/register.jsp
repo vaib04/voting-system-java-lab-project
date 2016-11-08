@@ -12,6 +12,25 @@
         <title>New Voter? Register</title>
     </head>
     <body>
-        
+        <center>
+            <div>
+                <h3>Sign up</h3>
+                <form action="/VotingSystem/registerVoter.htm" method="post">
+                 username: <input type="text" name="uname" /><br/>
+                 password: <input type="password" name="pass" /><br/>
+                 <input type="submit" value="Sign up" /><br/>
+                 <input type="reset" value="Reset" />
+                </form>
+            </div>
+            <hr>
+            <br/>
+            <div>
+               <h3> or <a href="login.htm">Go to Login page</a></h3>
+            </div>
+            <div>
+                ${msg}
+            </div>
+        </center>
+    
     </body>
 </html>

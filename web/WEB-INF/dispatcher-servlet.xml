@@ -29,6 +29,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
                 <prop key="login.htm">loginController</prop>
                 <prop key="register.htm">registerController</prop>
                 <prop key="user_loggedin.htm">userloggedinController</prop>
+                <prop key="admin_loggedin.htm">adminloggedinController</prop>
             </props>
         </property>
     </bean>
@@ -48,6 +49,9 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
     <bean name="registerController"
         class="org.springframework.web.servlet.mvc.ParameterizableViewController"
         p:viewName="register" />
+    <bean name="adminloggedinController"
+        class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+        p:viewName="admin_loggedin" />
     <bean name="userloggedinController"
         class="org.springframework.web.servlet.mvc.ParameterizableViewController"
         p:viewName="user_loggedin" />

@@ -8,16 +8,14 @@ package com.vaibhav.controllers;
  * and open the template in the editor.
  */
 
+import com.vaibhav.JDBC.MainClass;
 import com.vaibhav.POJO.Person;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.portlet.ModelAndView;
 
 /**
  *
@@ -29,18 +27,43 @@ public class DefaultController {
 //    public String index() {
 //        return "index";
 //    }
+    
    @RequestMapping(value="/login.htm", method = RequestMethod.GET)
-   public String initLogin() {
+   public String initLogin(ModelMap map) {
+       map.addAttribute("msg","");
        return "login";
    }
     
     @RequestMapping(value="/loginresult.htm", method = RequestMethod.POST)
     public String loginCredentials(ModelMap map, @RequestParam Map<String,String> param) {
         Person person=new Person();
-        person.setUname(param.get("uname"));
-        person.setPass(param.get("pass"));
-        map.addAttribute(person);
-        return "user_loggedin";
-    }
+        String uname=param.get("uname");
+        String pass=param.get("pass");
+        person.setUname(uname);
+        person.setPass(pass);
+        MainClass mc=new MainClass();
+        
+        if(mc.jdbcTemplate.validVoter(uname, pass)) {
+            if(mc.jdbcTemplate.isAdmin(uname)) {
+                map.addAttribute(person);
+                return "admin_loggedin";
+            }
+            map.addAttribute(person);
+            return "user_loggedin";
+        }
+      
+        map.addAttribute("msg","Not a valid user");
+        return "login";
 
+        
+    }
+    @RequestMapping(value="/registerVoter.htm", method = RequestMethod.POST)
+    public String signUp(ModelMap map, @RequestParam Map<String,String> param) {
+        String uname=param.get("uname");
+        String pass=param.get("pass");
+        MainClass mc=new MainClass();
+        mc.jdbcTemplate.addVoter(uname, pass);
+        map.addAttribute("msg","Successful registration");
+        return "register";
+    }
 }

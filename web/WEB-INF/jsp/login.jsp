@@ -30,6 +30,10 @@
             <div>
                <h3> or <a href="register.htm">Register</a></h3>
             </div>
+            <hr>
+            <div>
+                ${msg}
+            </div>
         </center>
     </body>
 </html>
