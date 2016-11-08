@@ -12,9 +12,17 @@
         <title>${person.uname}: logged in</title>
     </head>
     <body>
-        <h1>Hello</h1><br/>
-        <p> Username: ${person.uname} </p>
+    <center>
+        <h3>Hello ${person.uname}</h3><br/>
+        <form:form action="/VotingSystem/chooseElection.htm" method="post">
+            Choose Election: 
+            <form:select>
+                <form:options items="${elections}"/>
+            </form:select>
+        </form:form>
         
+        <hr>
         <a href="login.htm">Go to Login page</a>
+    </center>
     </body>
 </html>

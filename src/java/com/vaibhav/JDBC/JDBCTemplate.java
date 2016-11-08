@@ -83,13 +83,19 @@ public class JDBCTemplate implements DAO{
     }
 
     @Override
-    public List<Election> listElections() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<String> listElections() {
+        String sql="select name from elections";
+        List<String> elections=null;
+        elections=jdbcTemplateObj.query(sql, new ElectionMapper());
+        return elections;
     }
 
     @Override
-    public List<Party> listParties() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<String> listParties() {
+        String sql="select name from party";
+        List<String> party=null;
+        party=jdbcTemplateObj.query(sql, new PartyMapper());
+        return party;
     }
 
     @Override

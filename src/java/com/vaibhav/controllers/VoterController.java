@@ -10,6 +10,7 @@ package com.vaibhav.controllers;
 
 import com.vaibhav.JDBC.MainClass;
 import com.vaibhav.POJO.Person;
+import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author vaibhav
  */
 @Controller
-public class DefaultController {
+public class VoterController {
 //    @RequestMapping(value="/index",method=RequestMethod.GET)
 //    public String index() {
 //        return "index";
@@ -48,6 +49,11 @@ public class DefaultController {
                 map.addAttribute(person);
                 return "admin_loggedin";
             }
+            List<String> election=null,party=null;
+            election=mc.jdbcTemplate.listElections();
+            party=mc.jdbcTemplate.listParties();
+            map.addAttribute("elections",election);
+            map.addAttribute("parties",party);
             map.addAttribute(person);
             return "user_loggedin";
         }

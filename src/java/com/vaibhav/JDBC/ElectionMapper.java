@@ -14,14 +14,13 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author vaibhav
  */
-public class ElectionMapper implements RowMapper<Election> {
+public class ElectionMapper implements RowMapper<String> {
 
     @Override
-    public Election mapRow(ResultSet rs, int i) throws SQLException {
-        Election election=new Election();
-        election.setName(rs.getString("name"));
-        
-        return election;
+    public String mapRow(ResultSet rs, int i) throws SQLException {
+        return rs.getString("name");
     }
+
+    
 
 }

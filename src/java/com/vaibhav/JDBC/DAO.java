@@ -23,8 +23,8 @@ public interface DAO {
     public void delElection(String name);
     public void markVoted(String user,String election);
     public boolean ifVoted(String user,String election);
-    public List<Election> listElections();
-    public List<Party> listParties();
+    public List<String> listElections();
+    public List<String> listParties();
     public List<Person> listVoters();
     public boolean isAdmin(String uname);
     public boolean validVoter(String uname,String pass);

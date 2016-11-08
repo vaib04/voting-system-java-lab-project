@@ -14,13 +14,12 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author vaibhav
  */
-public class PartyMapper implements RowMapper<Party>{
+public class PartyMapper implements RowMapper<String>{
 
     @Override
-    public Party mapRow(ResultSet rs, int i) throws SQLException {
-        Party party=new Party();
-        party.setName(rs.getString("name"));
-        return party;
+    public String mapRow(ResultSet rs, int i) throws SQLException {
+        return rs.getString("name");
     }
-    
+
+  
 }
